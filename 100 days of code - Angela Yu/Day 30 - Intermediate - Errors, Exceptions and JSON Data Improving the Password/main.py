@@ -21,7 +21,7 @@ def search_password():
                 password_entry.insert(0, password)
     except FileNotFoundError:
         if len(website) == 0:
-            messagebox.showerror(message="search criteria cannot entry cannot be empty")
+            messagebox.showerror(message="Type in a Valid Website")
         else:
             messagebox.showinfo(title="Error", message="No Data File Found")
 
@@ -93,6 +93,7 @@ canvas = Canvas(width=200, height=200, bg="white", highlightthickness=0)
 logo_ing = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_ing)
 canvas.grid(column=1, row=0)
+
 
 website_label = Label(text="Website", bg="white")
 website_label.grid(column=0, row=1)
