@@ -1,10 +1,26 @@
 from tkinter import *
-from tkinter import messagebox
+import tkinter.messagebox as messagebox
 import random
 import pyperclip
 import json
 
 FONT = "Calibre"
+
+
+# Custom message box with blue background
+class BlueMessageBox(Toplevel):
+    def __init__(self, parent, title, message):
+        super().__init__(parent)
+        self.title(title)
+        self.config(bg="orange")
+
+        # Create label with the message
+        message_label = Label(self, text=message, bg="orange", fg="black", font=(FONT, 12))
+        message_label.pack(padx=20, pady=20)
+
+        # Create OK button to close the message box
+        ok_button = Button(self, text="OK", width=10, command=self.destroy)
+        ok_button.pack(pady=10)
 
 
 # ---------------------------- FIND PASSWORD ------------------------------- #
@@ -19,11 +35,14 @@ def search_password():
                 password = login_data['password']
                 email_entry.insert(0, email)
                 password_entry.insert(0, password)
+            else:
+                BlueMessageBox(window, "Error", f"No data for {website} Found")
+                delete()
     except FileNotFoundError:
         if len(website) == 0:
-            messagebox.showerror(message="search criteria cannot entry cannot be empty")
+            BlueMessageBox(window, "Error", "Search criteria cannot be empty")
         else:
-            messagebox.showinfo(title="Error", message="No Data File Found")
+            BlueMessageBox(window, "Error", "No Data File Found")
 
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
@@ -53,6 +72,9 @@ def generate_password():
     pyperclip.copy(password)
 
 
+def delete():
+    email_entry.delete(0, END)
+    password_entry.delete(0, END)
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 def save():
     website = website_entry.get()
@@ -82,7 +104,6 @@ def save():
             website_entry.delete(0, END)
             email_entry.delete(0, END)
             password_entry.delete(0, END)
-
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
