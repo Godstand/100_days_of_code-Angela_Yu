@@ -18,9 +18,7 @@ class QuizBrain:
         self.question_number += 1
         self.q_text = self.current_question.text
         return f"Q.{self.question_number}: {self.q_text}"
-        # user_guess = input(f"Q.{self.question_number}: {current_question.text} (True or False):").lower()
-        # correct_answer = current_question.answer.lower()
-        # self.check_answer(user_guess, correct_answer)
+
 
     def check_answer(self, user_guess):
         correct_answer = self.current_question.answer

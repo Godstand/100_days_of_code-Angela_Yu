@@ -34,7 +34,7 @@ class QuizInterface:
 
     def get_next_question(self):
         self.canvas.config(bg="white")
-        self.quiz.next_question()
+        # self.quiz.next_question()
         self.canvas.itemconfig(self.question_text, text=self.quiz.next_question())
 
     def true_pressed(self):
