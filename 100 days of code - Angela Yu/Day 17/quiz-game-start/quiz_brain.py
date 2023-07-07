@@ -1,4 +1,6 @@
 from question_model import Question
+
+
 class QuizBrain:
 
     def __init__(self, q_list):
@@ -22,9 +24,8 @@ class QuizBrain:
     def check_answer(self, user_guess, correct_answer):
         if user_guess == correct_answer:
             self.score += 1
-            print("You got it right")
+            return True
         else:
-            print("Oh, that's not correct. Try again later!")
-        print(f"The correct answer is {correct_answer}")
-        print(f"Your current score is {self.score}/{len(self.question_number)}")
-
+            return False
+        # print(f"The correct answer is {correct_answer}")
+        # print(f"Your current score is {self.score}/{len(self.question_number)}")
