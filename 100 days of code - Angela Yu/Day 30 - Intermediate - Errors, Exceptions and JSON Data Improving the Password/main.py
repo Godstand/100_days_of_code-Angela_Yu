@@ -40,7 +40,11 @@ def search_password():
                 delete()
     except FileNotFoundError:
         if len(website) == 0:
+<<<<<<< HEAD
+            messagebox.showerror(message="Type in a Valid Website")
+=======
             BlueMessageBox(window, "Error", "Search criteria cannot be empty")
+>>>>>>> 7298a767aa4d51a6ea521e59435e12ed11716f96
         else:
             BlueMessageBox(window, "Error", "No Data File Found")
 
@@ -114,6 +118,7 @@ canvas = Canvas(width=200, height=200, bg="white", highlightthickness=0)
 logo_ing = PhotoImage(file="logo.png")
 canvas.create_image(100, 100, image=logo_ing)
 canvas.grid(column=1, row=0)
+
 
 website_label = Label(text="Website", bg="white")
 website_label.grid(column=0, row=1)
